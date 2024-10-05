@@ -16,7 +16,7 @@ def main():
 		# checking if it is a file
 		if os.path.isfile(file):
 			domain = filename.replace('.conf', '')
-			cmnd = f'newcert.sh {domain}'
+			cmd = f'newcert.sh {domain}'
 			print(f'INFO: Calling {cmd}.')
 			os.system(cmd)
 	os.system('nginx -t && nginx -s reload')

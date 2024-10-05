@@ -4,7 +4,6 @@
 # General imports
 import os
 import signal
-import subprocess
 
 # Lib imports
 import inotify_simple
@@ -35,7 +34,9 @@ def monitoring(path):
 					print(f'INFO: New domain configuration found: {event.name}')
 					domain = event.name.replace('.conf', '')
 					print(f'INFO: Trigger certbot for domain {domain}.')
-					subprocess.Popen(['newcert.sh', domain])
+					cmd = f'newcert.sh {domain}'
+					print(f'INFO: Calling {cmd}.')
+					os.system(cmd)
 	except KeyboardInterrupt:
 		print('INFO: Stopping folder monitoring.')
 		inotify.rm_watch(watch_descriptor)
