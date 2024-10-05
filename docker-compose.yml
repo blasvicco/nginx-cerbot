@@ -1,0 +1,17 @@
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: ./hub/nginx/Dockerfile
+    command: 'tail -f /dev/null'
+    container_name: nginx
+    environment:
+      - CERTBOT_EMAIL=example01@gmail.com
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./data/nginx.conf:/etc/nginx/nginx.conf
+      - ./data/conf.d:/etc/nginx/conf.d
+      - ./data/letsencrypt:/etc/letsencrypt/
+      - ./data/www:/home/www
