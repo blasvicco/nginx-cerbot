@@ -16,6 +16,12 @@ COPY ./data/scripts/monitor.py /usr/bin/monitor.py
 COPY ./data/scripts/newcert.sh /usr/bin/newcert.sh
 COPY ./data/scripts/renewcert.py /usr/bin/renewcert.py
 
+# setup user
+RUN addgroup --gid 1000 app-user \
+    && adduser --disabled-password --no-create-home --gecos "" --home /root --ingroup nginx --ingroup root --uid 1000 app-user
+
+USER app-user
+
 WORKDIR /home/www
 
 ENTRYPOINT ["entrypoint.sh"]
