@@ -16,9 +16,9 @@ COPY ./data/scripts/monitor.py /usr/bin/monitor.py
 COPY ./data/scripts/newcert.sh /usr/bin/newcert.sh
 COPY ./data/scripts/renewcert.py /usr/bin/renewcert.py
 
-RUN addgroup --gid 1000 app-user \
-    && adduser --disabled-password --no-create-home --gecos "" --home /home/www --ingroup app-user --uid 1000 app-user \
-    && addgroup app-user nginx
+RUN addgroup --gid 1000 app-user && \
+    adduser --disabled-password --no-create-home --gecos "" --home /home/www --ingroup app-user --uid 1000 app-user && \
+    addgroup app-user nginx
 
 WORKDIR /home/www
 
