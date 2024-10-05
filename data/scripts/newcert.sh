@@ -10,5 +10,5 @@ certbot certonly \
 --cert-name $domain \
 -d $domain > /dev/stdout 2> /dev/stderr
 
-chown nginx:nginx -R /etc/letsencrypt/archive
-chown nginx:nginx -R /etc/letsencrypt/live
+chown app-user:nginx -R /etc/letsencrypt/archive
+chown app-user:nginx -R /etc/letsencrypt/live
