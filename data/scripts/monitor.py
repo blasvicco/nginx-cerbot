@@ -26,7 +26,7 @@ def monitoring(path):
 	try:
 		while RUNNING:
 			# Wait for an event (timeout of 1 second to allow loop to exit quickly)
-      events = inotify.read(timeout=1000)
+			events = inotify.read(timeout=1000)
 			# Process the events
 			for event in events:
 				# event.name contains the name of the file that triggered the event
